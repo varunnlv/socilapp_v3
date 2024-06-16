@@ -55,7 +55,7 @@ app.use(express.json());
 // Setting up CORS middleware to allow requests from specific origins
 app.use(
     cors({
-        origin: "http://localhost:5173",
+        origin: "https://socialapp-v.netlify.app",
     })
 );
 
