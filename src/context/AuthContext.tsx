@@ -53,8 +53,6 @@ const INITIAL_STATE: IContextType = {
   setUser2: () => { },
   setIsAuthenticated: () => { },
   checkAuthUser: async () => false,
-  login: async () => { }, // Add a default implementation
-  CreatingPost: async () => { }, // Add a default implementation
 };
 
 // Create context
