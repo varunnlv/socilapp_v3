@@ -50,31 +50,31 @@ const PostForm = ({ post, action }: PostFormProps) => {
   const { mutateAsync: updatePost, isPending: isLoadingUpdate } =
     useUpdatePost();
 
-  const upload = async (file: File | File[] | null): Promise<string> => {
-    try {
-      if (!file) {
-        return "";
-      }
+  // const upload = async (file: File | File[] | null): Promise<string> => {
+  //   try {
+  //     if (!file) {
+  //       return "";
+  //     }
 
-      const formData = new FormData();
+  //     const formData = new FormData();
 
-      if (Array.isArray(file)) {
-        // If file is an array, append each file to the formData
-        file.forEach((file, index) => {
-          formData.append(`file${index}`, file);
-        });
-      } else {
-        // If file is a single file, append it to the formData
-        formData.append("file", file);
-      }
+  //     if (Array.isArray(file)) {
+  //       // If file is an array, append each file to the formData
+  //       file.forEach((file, index) => {
+  //         formData.append(`file${index}`, file);
+  //       });
+  //     } else {
+  //       // If file is a single file, append it to the formData
+  //       formData.append("file", file);
+  //     }
 
-      const res = await makeRequest.post("/upload", formData); // Update the URL
-      return res.data;
-    } catch (err) {
-      console.error('Error uploading file:', err);
-      return "";
-    }
-  }
+  //     const res = await makeRequest.post("/upload", formData); // Update the URL
+  //     return res.data;
+  //   } catch (err) {
+  //     console.error('Error uploading file:', err);
+  //     return "";
+  //   }
+  // }
 
   // Handler
   const handleSubmit = async (value: z.infer<typeof PostValidation>) => {
