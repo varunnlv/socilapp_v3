@@ -41,11 +41,7 @@
 // };
 
 
-
-
-
 import { createContext, useState, useEffect, useContext, ReactNode } from "react";
-import { useAuthContext } from "./AuthContext2"
 import io, { Socket } from "socket.io-client";
 
 interface SocketContextType {
