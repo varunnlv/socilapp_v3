@@ -27,23 +27,6 @@ export const INITIAL_POST: IUpdatePost2 = {
   caption: "",
 };
 
-// Define initial state for the context
-const INITIAL_STATE: IContextType = {
-  user: INITIAL_USER,
-  user2: INITIAL_USER2,
-  Postt: INITIAL_POST,
-  isLoading: false,
-  isAuthenticated: false,
-  setPost: () => { },
-  setUser: () => { },
-  setUser2: () => { },
-  setIsAuthenticated: () => { },
-  checkAuthUser: async () => false,
-  login: async (email: string, password: string) => { },
-  CreatingPost: async (desc: string, img: string) => { },
-
-};
-
 // Define context type
 type IContextType = {
   user: IUser;
@@ -58,6 +41,22 @@ type IContextType = {
   checkAuthUser: () => Promise<boolean>;
   login: (email: string, password: string) => Promise<void>;
   CreatingPost: (desc: string, img: string) => Promise<void>;
+};
+
+// Define initial state for the context
+const INITIAL_STATE: IContextType = {
+  user: INITIAL_USER,
+  user2: INITIAL_USER2,
+  Postt: INITIAL_POST,
+  isLoading: false,
+  isAuthenticated: false,
+  setPost: () => { },
+  setUser: () => { },
+  setUser2: () => { },
+  setIsAuthenticated: () => { },
+  checkAuthUser: async () => false,
+  login: async () => { }, // Add a default implementation
+  CreatingPost: async () => { }, // Add a default implementation
 };
 
 // Create context
@@ -107,6 +106,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
     checkAuthUser();
   }, []);
+
+  // Placeholder functions for login and CreatingPost
+  const login = async (email: string, password: string) => {
+    // Implement login functionality here
+  };
+
+  const CreatingPost = async (desc: string, img: string) => {
+    // Implement CreatingPost functionality here
+  };
 
   // Context value object
   const value = {
