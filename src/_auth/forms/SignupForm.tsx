@@ -6,20 +6,17 @@ import { Link, useNavigate } from "react-router-dom"; // Routing related hooks
 import { zodResolver } from "@hookform/resolvers/zod"; // Resolver for using Zod with react-hook-form
 
 // Importing custom form components
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage, FormDescription } from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { SignupValidation } from '@/lib/validation'; // Validation schema for sign-up form
 
 import { z } from 'zod'; // Importing Zod for schema validation
 import { Loader } from 'lucide-react'; // Loader component
-import { createUserAccount } from '@/lib/appwrite/api'; // Function to create user account
-//import { createUserAccount } from '@/lib/mysql/api'; // Function to create user account (if needed)
+import axios from 'axios'; // HTTP client
 
 import { useToast } from '@/components/ui/use-toast'; // Hook for displaying toast messages
 import { useCreateUserAccount, useSignInAccount } from '@/lib/react-query/queriesAndMutations'; // Custom hooks for user account management
 import { useUserContext } from '@/context/AuthContext'; // Context hook for managing user authentication
-import axios from 'axios'; // HTTP client
-import useSignup from '@/hooks/useSignup';
 
 type Inputs = {
   name: string;
@@ -32,11 +29,9 @@ type Inputs = {
 const SignupForm = () => {
   const navigate = useNavigate(); // Navigation hook for redirecting users
   const { toast } = useToast(); // Toast message hook for displaying notifications
-  const { checkAuthUser, isLoading: isUserLoading } = useUserContext(); // Context hook for user authentication
+  const { checkAuthUser } = useUserContext(); // Context hook for user authentication
   const { mutateAsync: createUserAccount, isPending: isCreatingAccount } = useCreateUserAccount(); // Custom hook for creating user account
-  const { mutateAsync: signInAccount, isPending: isSigningInUser } = useSignInAccount(); // Custom hook for signing in user
-
-  // const { loading, signup } = useSignup();
+  const { mutateAsync: signInAccount } = useSignInAccount(); // Custom hook for signing in user
 
   const form = useForm<z.infer<typeof SignupValidation>>({ // useForm hook to manage form state and validation
     resolver: zodResolver(SignupValidation), // Using Zod resolver for form validation
@@ -55,24 +50,15 @@ const SignupForm = () => {
       await axios.post("http://localhost:8800/api/auth/register", inputs);
       toast({ title: "User created in Second database", });
 
-      //await signup(inputs);
-
-
-
       const response = await axios.post("http://localhost:8800/api/auth/signup", inputs);
       console.log("response", response.data)
 
       localStorage.setItem("chat-user", JSON.stringify(response.data));
 
-
-
       const userId = response.data._id; // Assuming the response contains the user ID
       console.log("User ID:", userId);
       localStorage.setItem("userId", JSON.stringify(userId));
       toast({ title: "User created in third database", });
-
-
-      // console.log("User created in SQL database");
     } catch (err) {
       // Display toast message if registration fails
       toast({ title: "Sign up failed. Please try again.", });
@@ -82,7 +68,6 @@ const SignupForm = () => {
 
   // Function to handle form submission
   async function onSubmit(values: z.infer<typeof SignupValidation>) {
-
     // Create user account using the custom hook
     const newUser = await createUserAccount(values);
     toast({ title: "User created in First database", });
@@ -114,10 +99,9 @@ const SignupForm = () => {
         isLogg = true;
       }
 
-      const res2 = await axios.post("http://localhost:8800/api/auth/signin", { email, password }, {
+      await axios.post("http://localhost:8800/api/auth/signin", { email, password }, {
         withCredentials: true,
       });
-
 
     } catch (error) {
       // Handle error, if necessary
@@ -225,7 +209,6 @@ const SignupForm = () => {
                 <Loader /> Loading...
               </div>
             ) : "Sign up"}
-
           </Button>
 
           <p className='text-small-regular text-light-2 text-center mt-2'>Already have an account? <Link to="/sign-in" className='text-primary-500 text-small-semibold ml-1'>Log in</Link></p>
@@ -237,4 +220,4 @@ const SignupForm = () => {
   )
 }
 
-export default SignupForm
+export default SignupForm;
