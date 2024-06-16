@@ -22,7 +22,7 @@ const Messaging = () => {
                                 <Conversation
                                     key={conversation._id}
                                     conversation={conversation}
-                                    name={conversation.name} // Ensure the name property is passed
+                                    
                                     emoji={getRandomEmoji()}
                                     lastIdx={idx === conversations.length - 1}
                                 />
