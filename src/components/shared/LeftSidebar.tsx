@@ -5,7 +5,7 @@ import Loader from "./Loader";
 import { Button } from "@/components/ui/button";
 import { useSignOutAccount } from "@/lib/react-query/queriesAndMutations";
 import { useUserContext, INITIAL_USER } from "@/context/AuthContext";
-import { IUser } from "@/types";
+// import { IUser } from "@/types";
 
 
 const LeftSidebar = () => {
