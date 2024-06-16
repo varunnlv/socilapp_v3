@@ -16,8 +16,7 @@ const Message: React.FC<Props> = ({ message }) => {
 	const fromMe = user && message.senderId === user?._id; // Check if authUser exists before accessing its properties
 	const formattedTime = extractTime(message.createdAt);
 	const chatClassName = fromMe ? "chat-end" : "chat-start";
-
-	const shakeClass = message.shouldShake ? "shake" : "";
+const profilePic = fromMe ? (user && user?.profilePic) : (selectedConversation?.profilePic || ''); // Check if authUser exists before accessing its properties
 
 	return (
 		<div className={`chat ${chatClassName} relative mb-2 flex items-start justify-${fromMe ? 'end' : 'start'}`}>
