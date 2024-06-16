@@ -1,7 +1,6 @@
 import { Models } from "appwrite";
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import TextsmsOutlinedIcon from "@mui/icons-material/TextsmsOutlined";
 import { checkIsLiked } from "@/lib/utils";
 import {
   useLikePost,
@@ -9,7 +8,6 @@ import {
   useDeleteSavedPost,
   useGetCurrentUser,
 } from "@/lib/react-query/queriesAndMutations";
-import Comments from "@/_root/pages/Comments";
 import { useUserContext } from "@/context/AuthContext";
 
 type PostStatsProps = {
@@ -20,7 +18,6 @@ type PostStatsProps = {
 const PostStats = ({ post, userId }: PostStatsProps) => {
   const location = useLocation();
   const likesList = post.likes.map((user: Models.Document) => user.$id);
-  const [commentOpen, setCommentOpen] = useState(false);
 
   const [likes, setLikes] = useState<string[]>(likesList);
   const [isSaved, setIsSaved] = useState(false);
@@ -28,9 +25,6 @@ const PostStats = ({ post, userId }: PostStatsProps) => {
   const { mutate: likePost } = useLikePost();
   const { mutate: savePost } = useSavePost();
   const { mutate: deleteSavePost } = useDeleteSavedPost();
-
-
-  const { Postt } = useUserContext();
 
   const { data: currentUser } = useGetCurrentUser();
 
