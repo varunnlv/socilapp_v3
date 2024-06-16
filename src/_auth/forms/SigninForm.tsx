@@ -57,7 +57,7 @@ const SigninForm = () => {
       // await login(email, password);
 
       // Example of making a request to authenticate on the server
-      const res = await axios.post("http://localhost:8800/api/auth/login", { email, password }, {
+      const res = await axios.post("https://socilapp-v3.onrender.com/api/auth/login", { email, password }, {
         withCredentials: true,
       });
 
@@ -67,7 +67,7 @@ const SigninForm = () => {
 
       console.log("res", name);
 
-      const res2 = await axios.post("http://localhost:8800/api/auth/signin", { name, password }, {
+      const res2 = await axios.post("https://socilapp-v3.onrender.com/api/auth/signin", { name, password }, {
         withCredentials: true,
       });
 
