@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 interface ConversationType {
     _id: string;
-    name: string;
+    fullName: string;
     profilePic: string;
     // Add other properties if available
 }
@@ -26,12 +26,12 @@ const useGetConversations = () => {
                 // Transform fetched data to match ConversationType
                 const transformedConversations = data.map((conversation: any) => ({
                     _id: conversation._id,
-                    name: conversation.fullName, // Adjust to match ConversationType
+                    fullName: conversation.fullName, // Adjust to match ConversationType
                     profilePic: conversation.profilePic,
                 }));
                 setConversations(transformedConversations);
             } catch (error) {
-                // Handle error
+                console.error('Error fetching conversations:', error);
             } finally {
                 setLoading(false);
             }
