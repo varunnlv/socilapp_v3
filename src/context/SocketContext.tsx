@@ -44,8 +44,8 @@
 
 
 
-import React, { createContext, useState, useEffect, useContext, ReactNode } from "react";
-import { useAuthContext } from "./AuthContext2";
+import { createContext, useState, useEffect, useContext, ReactNode } from "react";
+import { useAuthContext } from "./AuthContext2"
 import io, { Socket } from "socket.io-client";
 
 interface SocketContextType {
@@ -69,7 +69,6 @@ interface SocketContextProviderProps {
 export const SocketContextProvider = ({ children }: SocketContextProviderProps): JSX.Element => {
   const [socket, setSocket] = useState<Socket | null>(null);
   const [onlineUsers, setOnlineUsers] = useState<any[]>([]);
-  const { authUser } = useAuthContext();
 
   useEffect(() => {
 
