@@ -23,6 +23,8 @@ const SigninForm = () => {
 
   // const { loading, login2 } = useLogin();
 
+  // const { login } = useUserContext(); // Destructuring login function from user context
+
   // Destructure signInAccount function and isPending state from useSignInAccount hook
   const { mutateAsync: signInAccount, isPending } = useSignInAccount();
 
@@ -52,7 +54,7 @@ const SigninForm = () => {
 
     try {
       // Call login function with user credentials
-      await login(email, password);
+      // await login(email, password);
 
       // Example of making a request to authenticate on the server
       const res = await axios.post("http://localhost:8800/api/auth/login", { email, password }, {
