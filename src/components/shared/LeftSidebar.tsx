@@ -1,5 +1,4 @@
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
-import axios from "axios";
 import { INavLink } from "@/types";
 import { sidebarLinks } from "@/constants";
 import Loader from "./Loader";
@@ -16,17 +15,17 @@ const LeftSidebar = () => {
 
   const { mutate: signOut } = useSignOutAccount();
 
-  const handleSignout = async (user: IUser) => {
-    try {
-      // await axios.post("http://localhost:8800/api/auth/logout", user);
-      // console.log("User logged out successfully");
-      navigate("/sign-in");
-    } catch (err) {
-      // Handle error, if necessary
-      console.error("Logout failed", err);
-      throw err;
-    }
-  };
+  // const handleSignout = async (user: IUser) => {
+  //   try {
+  //     // await axios.post("http://localhost:8800/api/auth/logout", user);
+  //     // console.log("User logged out successfully");
+  //     navigate("/sign-in");
+  //   } catch (err) {
+  //     // Handle error, if necessary
+  //     console.error("Logout failed", err);
+  //     throw err;
+  //   }
+  // };
 
   const handleSignOut = async (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
