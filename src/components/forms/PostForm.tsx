@@ -105,7 +105,7 @@ const PostForm = ({ post, action }: PostFormProps) => {
 
     try {
       const imgFileName = await upload(value.file[0]);
-       await CreatingPost(imgFileName);
+       // await CreatingPost(imgFileName);
 
       // const response: any = await makeRequest.post("/posts", { ...postData, userId: user.id });
       // postId1 = response?.data?.postId1;
