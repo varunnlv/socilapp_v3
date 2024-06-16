@@ -1,19 +1,17 @@
-import SearchInput from './sidebar/SearchInput'
-import Conversation from './sidebar/Conversation'
-import useGetConversations from '@/hooks/useGetConversations'
-import { getRandomEmoji } from '@/utils/emojis'
-import MessageContainer from './messages/MessageContainer'
+import SearchInput from './sidebar/SearchInput';
+import Conversation from './sidebar/Conversation';
+import useGetConversations from '@/hooks/useGetConversations';
+import { getRandomEmoji } from '@/utils/emojis';
+import MessageContainer from './messages/MessageContainer';
 
 const Messaging = () => {
-
     const { loading, conversations } = useGetConversations();
 
     return (
         <div className="w-full mt-7 ml-5 flex flex-col md:flex-row">
             <div className="md:w-2/5 h-full overflow-y-auto mb-5 md:mb-0">
                 <div className="flex flex-col h-full">
-                    <h2 className="h3-bold  mb-0 md:h2-bold w-full">Messages</h2>
-
+                    <h2 className="h3-bold mb-0 md:h2-bold w-full">Messages</h2>
                     <div className="mb-2">
                         <SearchInput />
                     </div>
@@ -24,6 +22,7 @@ const Messaging = () => {
                                 <Conversation
                                     key={conversation._id}
                                     conversation={conversation}
+                                    name={conversation.name} // Ensure the name property is passed
                                     emoji={getRandomEmoji()}
                                     lastIdx={idx === conversations.length - 1}
                                 />
@@ -44,7 +43,6 @@ const Messaging = () => {
                     </div> */}
                     <div className="overflow-y-auto">
                         <MessageContainer />
-
                         {/* <div className="flex flex-col space-y-2">
                             <div className="flex items-start">
                                <div className="w-8 h-8 bg-gray-300 rounded-full mr-3"></div>
@@ -52,7 +50,6 @@ const Messaging = () => {
                                     <p className="text-sm">Message text</p>
                                     <span className="text-xs text-gray-500">10:30 AM</span>
                                 </div>
-                                
                             </div>
                         </div> */}
                     </div>
@@ -66,9 +63,7 @@ const Messaging = () => {
                 </div>
             </div>
         </div>
+    );
+};
 
-
-    )
-}
-
-export default Messaging
+export default Messaging;
