@@ -23,8 +23,6 @@ const SigninForm = () => {
 
   // const { loading, login2 } = useLogin();
 
-  const { login } = useUserContext(); // Destructuring login function from user context
-
   // Destructure signInAccount function and isPending state from useSignInAccount hook
   const { mutateAsync: signInAccount, isPending } = useSignInAccount();
 
