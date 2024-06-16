@@ -2,7 +2,7 @@
   "name": "projj2",
   "private": true,
   "version": "0.0.0",
-    "proxy": "https://cloud.appwrite.io",
+    "proxy": "https://cloud.appwrite.io/v1",
   "type": "module",
   "scripts": {
     "dev": "vite",
