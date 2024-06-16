@@ -107,15 +107,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     checkAuthUser();
   }, []);
 
-  // Placeholder functions for login and CreatingPost
-  const login = async (email: string, password: string) => {
-    // Implement login functionality here
-  };
-
-  const CreatingPost = async (desc: string, img: string) => {
-    // Implement CreatingPost functionality here
-  };
-
   // Context value object
   const value = {
     user,
