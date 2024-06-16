@@ -19,7 +19,7 @@ import { useUserContext } from "@/context/AuthContext";
 import FileUploader from "../shared/FileUploader";
 import Loader from "../shared/Loader";
 import { Textarea } from "../ui/textarea";
-import { Button } from "../ui/button
+import { Button } from "../ui/button";
 
 import { makeRequest } from "@/axios";
 
