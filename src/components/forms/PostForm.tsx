@@ -20,7 +20,6 @@ import FileUploader from "../shared/FileUploader";
 import Loader from "../shared/Loader";
 import { Textarea } from "../ui/textarea";
 import { Button } from "../ui/button";
-import { makeRequest } from "@/axios";
 import { Input } from "../ui/input";
 import { useCreatePost, useUpdatePost } from "@/lib/react-query/queriesAndMutations";
 // import { Loader } from "lucide-react";
