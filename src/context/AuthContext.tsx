@@ -112,15 +112,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     user,
     user2,
     Postt,
-    login,
     setUser,
     setUser2,
     setPost,
     isLoading,
     isAuthenticated,
     setIsAuthenticated,
-    checkAuthUser,
-    CreatingPost,
+    checkAuthUser
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
