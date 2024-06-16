@@ -37,7 +37,7 @@ const useSignup = (): SignupResult => {
 			console.log("work is working")
 			setAuthUser(data);
 		} catch (error) {
-			toast.error(error.message);
+			toast.error("error");
 		} finally {
 			setLoading(false);
 		}
