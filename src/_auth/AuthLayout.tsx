@@ -1,4 +1,3 @@
-import React from 'react'
 import { Outlet, Navigate } from "react-router-dom";
 
 // Define the AuthLayout component responsible for rendering the layout of authentication-related pages.
