@@ -30,17 +30,10 @@ type PostFormProps = {
   action: "Create" | "Update";
 };
 
-type NewPostType = {
-  desc: string;
-  img: string;
-  // Add other properties as needed
-};
-
-
 const PostForm = ({ post, action }: PostFormProps) => {
   const navigate = useNavigate();
   const { toast } = useToast();
-  const { user, CreatingPost, Postt } = useUserContext();
+  const { user, CreatingPost } = useUserContext();
   const form = useForm<z.infer<typeof PostValidation>>({
     resolver: zodResolver(PostValidation),
     defaultValues: {
