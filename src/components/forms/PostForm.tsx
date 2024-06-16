@@ -19,15 +19,13 @@ import { useUserContext } from "@/context/AuthContext";
 import FileUploader from "../shared/FileUploader";
 import Loader from "../shared/Loader";
 import { Textarea } from "../ui/textarea";
-import { Button } from "../ui/button";
+import { Button } from "../ui/button
 
 import { makeRequest } from "@/axios";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { useState } from "react";
 import { Input } from "../ui/input";
 import { useCreatePost, useUpdatePost } from "@/lib/react-query/queriesAndMutations";
-import { AxiosResponse } from "axios";
 // import { Loader } from "lucide-react";
 
 type PostFormProps = {
@@ -45,7 +43,7 @@ type NewPostType = {
 const PostForm = ({ post, action }: PostFormProps) => {
   const navigate = useNavigate();
   const { toast } = useToast();
-  const { user, user2, CreatingPost, Postt } = useUserContext();
+  const { user, CreatingPost, Postt } = useUserContext();
   const form = useForm<z.infer<typeof PostValidation>>({
     resolver: zodResolver(PostValidation),
     defaultValues: {
@@ -61,10 +59,6 @@ const PostForm = ({ post, action }: PostFormProps) => {
     useCreatePost();
   const { mutateAsync: updatePost, isPending: isLoadingUpdate } =
     useUpdatePost();
-
-  const [file, setFile] = useState<File | null>(null);
-  const [desc, setDesc] = useState<string>("");
-
 
   const upload = async (file: File | File[] | null): Promise<string> => {
     try {
@@ -111,14 +105,6 @@ const PostForm = ({ post, action }: PostFormProps) => {
         // Add other properties as needed
       };
 
-      try {
-        const response: any = await makeRequest.put(`/posts/${postId11}`, { ...postData1, userId: user.id, postId: Postt.postId });
-
-        console.log('Put request updated successful');
-      } catch (error) {
-        console.error('Put request failed:', error);
-      }
-
       if (!updatedPost) {
         toast({
           title: `${action} post failed. Please try again.`,
@@ -136,13 +122,7 @@ const PostForm = ({ post, action }: PostFormProps) => {
 
     try {
       const imgFileName = await upload(value.file[0]);
-      const postData: NewPostType = {
-        desc: value.caption,
-        img: imgFileName || '',
-        // Add other properties as needed
-      };
-
-      await CreatingPost(desc, imgFileName);
+       await CreatingPost(desc, imgFileName);
 
       // const response: any = await makeRequest.post("/posts", { ...postData, userId: user.id });
       // postId1 = response?.data?.postId1;
