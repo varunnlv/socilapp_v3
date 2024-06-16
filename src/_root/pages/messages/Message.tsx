@@ -43,3 +43,6 @@ return (
 );
 };
 
+export default Message;
+
+
