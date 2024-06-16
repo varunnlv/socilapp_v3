@@ -39,8 +39,6 @@ type IContextType = {
   isAuthenticated: boolean;
   setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
   checkAuthUser: () => Promise<boolean>;
-  login: (email: string, password: string) => Promise<void>;
-  CreatingPost: (desc: string, img: string) => Promise<void>;
 };
 
 // Define initial state for the context
