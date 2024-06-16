@@ -23,7 +23,7 @@ export default function AuthLayout() {
 
           {/* Background image for visual appeal in larger screens */}
           <img
-            src="public\assets\images\img3.jpg"
+            src="public\assets\images\img1.jpg"
             alt="logo"
             className="hidden xl:block h-screen w-1/2 object-cover bg-no-repeat"
           />
