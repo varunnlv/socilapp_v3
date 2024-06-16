@@ -20,10 +20,7 @@ import FileUploader from "../shared/FileUploader";
 import Loader from "../shared/Loader";
 import { Textarea } from "../ui/textarea";
 import { Button } from "../ui/button";
-
 import { makeRequest } from "@/axios";
-
-import { useState } from "react";
 import { Input } from "../ui/input";
 import { useCreatePost, useUpdatePost } from "@/lib/react-query/queriesAndMutations";
 // import { Loader } from "lucide-react";
@@ -86,7 +83,6 @@ const PostForm = ({ post, action }: PostFormProps) => {
     }
   }
 
-  const postId11 = Postt.postId;
   // Handler
   const handleSubmit = async (value: z.infer<typeof PostValidation>) => {
     // ACTION = CREATE
@@ -98,12 +94,6 @@ const PostForm = ({ post, action }: PostFormProps) => {
         imageId: post.imageId,
         imageUrl: post.imageUrl,
       });
-
-      const postData1: NewPostType = {
-        desc: value.caption, // Use caption as dec
-        img: ''
-        // Add other properties as needed
-      };
 
       if (!updatedPost) {
         toast({
@@ -122,7 +112,7 @@ const PostForm = ({ post, action }: PostFormProps) => {
 
     try {
       const imgFileName = await upload(value.file[0]);
-       await CreatingPost(desc, imgFileName);
+       await CreatingPost(imgFileName);
 
       // const response: any = await makeRequest.post("/posts", { ...postData, userId: user.id });
       // postId1 = response?.data?.postId1;
