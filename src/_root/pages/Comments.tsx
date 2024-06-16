@@ -1,9 +1,8 @@
 import React, { useState, MouseEvent, ChangeEvent, useEffect } from 'react';
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { useQueryClient } from '@tanstack/react-query';
 import { makeRequest } from '../../axios';
 import moment from 'moment';
 import { useUserContext } from '@/context/AuthContext';
-import { User } from 'lucide-react';
 
 // Define the Comment interface to describe the structure of a comment object
 interface Comment {
@@ -23,7 +22,6 @@ const Comments: React.FC<CommentsProps> = ({ postId }) => {
     // Initialize state variables
     const [desc, setDesc] = useState<string>(''); // State variable for comment description
     const { user, user2, Postt } = useUserContext(); // Accessing user context data
-    const queryClient = useQueryClient(); // Query client for react-query
     const [comments, setComments] = useState<Comment[]>([]); // State variable for comments
     const [isLoading, setIsLoading] = useState<boolean>(false); // State variable for loading status
     const [error, setError] = useState<Error | null>(null); // State variable for error
