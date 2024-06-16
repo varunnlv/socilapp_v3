@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { IUser, IUpdatePost2 } from "@/types";
 import { getCurrentUser } from "@/lib/appwrite/api";
 
@@ -40,8 +39,6 @@ const INITIAL_STATE: IContextType = {
   setUser2: () => { },
   setIsAuthenticated: () => { },
   checkAuthUser: async () => false,
-  login: async (email: string, password: string) => { },
-  CreatingPost: async (desc: string, img: string) => { },
 };
 
 // Define context type
@@ -71,17 +68,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [Postt, setPost] = useState<IUpdatePost2>(INITIAL_POST);
-
-  // Function to log in user
-  const login = async (email: string, password: string) => {
-    setIsLoading(true);
-    // Perform login logic here
-  };
-
-  // Function to create post
-  const CreatingPost = async (desc: string, img: string) => {
-    // Perform post creation logic here
-  };
 
   // Function to check if user is authenticated
   const checkAuthUser = async () => {
