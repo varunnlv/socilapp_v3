@@ -16,8 +16,6 @@ const Message: React.FC<Props> = ({ message }) => {
 	const fromMe = user && message.senderId === user?._id; // Check if authUser exists before accessing its properties
 	const formattedTime = extractTime(message.createdAt);
 	const chatClassName = fromMe ? "chat-end" : "chat-start";
-	const profilePic = fromMe ? (user && user?.profilePic) : (selectedConversation?.profilePic || ''); // Check if authUser exists before accessing its properties
-	const bubbleBgColor = fromMe ? "bg-blue-500" : "";
 
 	const shakeClass = message.shouldShake ? "shake" : "";
 
