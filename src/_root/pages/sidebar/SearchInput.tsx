@@ -1,52 +1,43 @@
-import { useState } from "react";
-import { IoSearchSharp } from "react-icons/io5";
-import useConversation from "@/zustand/useConversation";
-import useGetConversations from "@/hooks/useGetConversations";
-import toast from "react-hot-toast";
+import { useState } from 'react';
+import useGetConversations from '@/hooks/useGetConversations';
 
-interface Conversation {
-	fullName: string;
-	// Add other properties if available
+interface ConversationType {
+    _id: string;
+    fullName: string;
+    profilePic: string;
+    // Add other properties if available
 }
 
 const SearchInput = () => {
-	const [search, setSearch] = useState<string>("");
-	const { setSelectedConversation } = useConversation();
-	const { conversations } = useGetConversations();
+    const [searchTerm, setSearchTerm] = useState<string>('');
+    const { conversations } = useGetConversations();
 
-	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
-		if (!search) return;
-		if (search.length < 3) {
-			return toast.error("Search term must be at least 3 characters long");
-		}
+    const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchTerm(event.target.value);
+    };
 
-		const foundConversation = conversations.find((c: Conversation) =>
-			c.fullName.toLowerCase().includes(search.toLowerCase())
-		);
+    const filteredConversations = conversations.filter((conversation: ConversationType) =>
+        conversation.fullName.toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
-		if (foundConversation) {
-			setSelectedConversation(foundConversation);
-			setSearch("");
-		} else {
-			toast.error("No such user found!");
-		}
-	};
-
-	return (
-		<form onSubmit={handleSubmit} className='w-full flex items-center gap-2'>
-			<input
-				type='text'
-				placeholder='   Search…'
-				className='w-full h-9 input input-bordered'
-				value={search}
-				onChange={(e) => setSearch(e.target.value)}
-			/>
-			<button type='submit' className='btn btn-circle bg-sky-500 text-white'>
-				<IoSearchSharp className='w-6 h-9 outline-none' />
-			</button>
-		</form>
-	);
+    return (
+        <div>
+            <input
+                type="text"
+                placeholder="Search conversations..."
+                value={searchTerm}
+                onChange={handleSearch}
+                className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
+            />
+            {/* Render filtered conversations */}
+            {filteredConversations.map(conversation => (
+                <div key={conversation._id}>
+                    <p>{conversation.fullName}</p>
+                    {/* Add additional rendering logic as needed */}
+                </div>
+            ))}
+        </div>
+    );
 };
 
 export default SearchInput;
