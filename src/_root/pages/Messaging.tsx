@@ -1,6 +1,3 @@
-
-import { Sidebar } from 'lucide-react'
-import React from 'react'
 import SearchInput from './sidebar/SearchInput'
 import Conversation from './sidebar/Conversation'
 import useGetConversations from '@/hooks/useGetConversations'
