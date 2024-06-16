@@ -26,7 +26,6 @@ const Messaging = () => {
                                     conversation={conversation}
                                     emoji={getRandomEmoji()}
                                     lastIdx={idx === conversations.length - 1}
-                                    name={conversation.name}
                                 />
                             ))}
                             {loading && <span className="loading loading-spinner mx-auto"></span>}
