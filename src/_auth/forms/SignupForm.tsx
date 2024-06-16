@@ -1,5 +1,4 @@
 import { Button } from '@/components/ui/button'; // Importing button component
-import { useContext } from "react"; // Importing necessary hooks from React
 import { useForm } from "react-hook-form"; // Form state and validation hook
 import { Link, useNavigate } from "react-router-dom"; // Routing related hooks
 import { zodResolver } from "@hookform/resolvers/zod"; // Resolver for using Zod with react-hook-form
