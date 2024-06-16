@@ -1,4 +1,3 @@
-import React from "react";
 import SearchInput from './sidebar/SearchInput';
 import Conversation from './sidebar/Conversation';
 import useGetConversations from '@/hooks/useGetConversations';
@@ -11,7 +10,7 @@ const Messaging = () => {
     // Transform conversations to match ConversationType
     const transformedConversations = conversations.map(conversation => ({
         _id: conversation._id,
-        name: conversation.fullName, // Adjust to match ConversationType
+        name: conversation.fullName, // Assuming 'fullName' can be used as 'name'
         profilePic: conversation.profilePic,
     }));
 
