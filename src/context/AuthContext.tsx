@@ -38,7 +38,8 @@ const INITIAL_STATE: IContextType = {
   setUser: () => { },
   setUser2: () => { },
   setIsAuthenticated: () => { },
-  checkAuthUser: async () => falselogin: async (email: string, password: string) => { },
+  checkAuthUser: async () => false,
+  login: async (email: string, password: string) => { },
   CreatingPost: async (desc: string, img: string) => { },
 
 };
